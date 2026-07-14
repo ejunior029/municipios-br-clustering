@@ -4,3 +4,6 @@ scikit-learn
 matplotlib
 seaborn
 jupyter
+requests
+kmodes
+hdbscan
