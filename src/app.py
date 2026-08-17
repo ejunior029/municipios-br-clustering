@@ -2,9 +2,9 @@
 API FastAPI para servir o modelo final de clusterização de municípios brasileiros
 (KPrototypes, k=2), treinado no notebook `notebooks/04_Avaliacao_Conclusao.ipynb`.
 
-Como rodar:
+Como rodar (a partir da raiz do projeto):
     pip install -r requirements.txt
-    uvicorn app:app --reload
+    uvicorn src.app:app --reload --app-dir .
 
 Depois, acesse http://127.0.0.1:8000/docs para a documentação interativa.
 
@@ -21,8 +21,12 @@ import pandas as pd
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
 
-PASTA_MODELS = "models"
-PASTA_REPORTS = "reports"
+# Caminhos resolvidos a partir da localização deste arquivo (não do diretório de
+# onde o servidor é iniciado), para que a API funcione tanto rodando de dentro de
+# src/ quanto da raiz do projeto.
+PASTA_BASE = os.path.dirname(os.path.abspath(__file__))
+PASTA_MODELS = os.path.join(PASTA_BASE, "..", "models")
+PASTA_REPORTS = os.path.join(PASTA_BASE, "..", "reports")
 
 CAMINHO_SCALER = os.path.join(PASTA_MODELS, "final_scaler.joblib")
 CAMINHO_MODELO = os.path.join(PASTA_MODELS, "final_kprototypes.joblib")
