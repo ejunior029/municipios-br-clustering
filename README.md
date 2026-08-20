@@ -8,6 +8,9 @@ This project pulls live population and GDP data straight from IBGE's public API,
 [![scikit-learn](https://img.shields.io/badge/scikit--learn-1.9-orange.svg)](https://scikit-learn.org/)
 [![Jupyter](https://img.shields.io/badge/notebooks-Jupyter-F37626.svg)](https://jupyter.org/)
 [![Data source](https://img.shields.io/badge/data-IBGE%20%2F%20dados.gov.br-009c3b.svg)](https://dados.gov.br)
+[![API live](https://img.shields.io/badge/API-live%20on%20Render-46E3B7.svg)](https://municipios-br-clustering.onrender.com/docs)
+
+**Try the model yourself, right now, no setup required:** [municipios-br-clustering.onrender.com/docs](https://municipios-br-clustering.onrender.com/docs) — it's a free-tier instance, so the first request after a while can take ~30-50s to wake up.
 
 ---
 
@@ -160,7 +163,9 @@ The model artifacts the API needs (`models/final_scaler.joblib`, `models/final_k
 
 ### Deploying it for real
 
-[`render.yaml`](render.yaml) is a ready-to-use [Render](https://render.com) Blueprint. To get a public URL:
+This API is already deployed and live at **[municipios-br-clustering.onrender.com](https://municipios-br-clustering.onrender.com/docs)**, hosted on [Render](https://render.com)'s free tier. To deploy your own copy:
+
+[`render.yaml`](render.yaml) is a ready-to-use Render Blueprint. To get a public URL:
 
 1. Push this repo to your own GitHub account (already done if you're reading this on GitHub).
 2. On Render, click **New > Blueprint**, connect the repo, and accept the defaults — it reads `render.yaml` and configures the build/start commands and health check automatically.
