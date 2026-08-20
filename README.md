@@ -156,6 +156,18 @@ uvicorn src.app:app --reload --app-dir .
 
 Then check `http://127.0.0.1:8000/docs` for interactive Swagger docs, or `POST /predict` with a municipality's indicators to get its cluster.
 
+The model artifacts the API needs (`models/final_scaler.joblib`, `models/final_kprototypes.joblib`, `reports/municipios_clusterizados.csv`) are small enough to be committed to this repo directly — see the exceptions at the bottom of [`.gitignore`](.gitignore) — so a fresh clone can serve the API without retraining anything.
+
+### Deploying it for real
+
+[`render.yaml`](render.yaml) is a ready-to-use [Render](https://render.com) Blueprint. To get a public URL:
+
+1. Push this repo to your own GitHub account (already done if you're reading this on GitHub).
+2. On Render, click **New > Blueprint**, connect the repo, and accept the defaults — it reads `render.yaml` and configures the build/start commands and health check automatically.
+3. Wait for the build to finish; Render gives you a URL like `https://municipios-br-clustering-api.onrender.com`, with interactive docs at `/docs`.
+
+Free-tier services on Render spin down after inactivity, so the first request after a while takes ~30-50s to wake up — normal, not a bug.
+
 ## Tech stack
 
 `pandas` · `numpy` · `scikit-learn` · `kmodes` (KModes / KPrototypes) · `hdbscan` · `matplotlib` · `seaborn` · `requests` · `FastAPI` · Jupyter

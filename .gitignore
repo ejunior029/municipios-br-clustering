@@ -11,7 +11,7 @@ __pycache__/
 
 # Dados e modelos (geralmente pesados - nao versionar)
 data/
-models/
+models/*
 *.csv
 *.parquet
 *.pkl
@@ -26,3 +26,10 @@ reports/*.html
 .idea/
 .DS_Store
 Thumbs.db
+
+# Excecoes: artefatos do modelo final, necessarios para rodar a API (src/app.py)
+# em producao (ver README, secao "Serving the model"). Precisam ficar por ultimo
+# no arquivo, depois das regras acima, para vencer os padroes *.csv/*.joblib.
+!models/final_scaler.joblib
+!models/final_kprototypes.joblib
+!reports/municipios_clusterizados.csv
