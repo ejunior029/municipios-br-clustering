@@ -33,3 +33,5 @@ Thumbs.db
 !models/final_scaler.joblib
 !models/final_kprototypes.joblib
 !reports/municipios_clusterizados.csv
+
+aula.mp4
